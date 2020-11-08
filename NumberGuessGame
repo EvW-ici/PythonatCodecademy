@@ -1,0 +1,53 @@
+""" 
+Number Guess is a program where a pair of dice is rolled,
+and the user has to guess the sum.
+If the user's guess is equal to the total value of the dice roll, the user wins! Otherwise, the computer wins.
+"""
+
+#2-3importing functions for generating random numbers and time to simulate dice roll
+from random import randint
+from time import sleep
+
+#4/5/6/7 Prompt user for guess and change to integer
+def get_user_guess():
+  guess = int(raw_input("Guess a number: "))
+  return guess
+
+#8/9 Function for dice roll
+def roll_dice(number_of_sides):
+  #10/11 simulate dice rolls
+  first_roll = randint(1, number_of_sides)
+  second_roll = randint(1, number_of_sides)
+  #12/13 calculating maximum value and inform user
+  max_val = number_of_sides * 2
+  print "%d is the maximum value" % max_val
+  #14 getting user guess
+  guess = get_user_guess()
+
+#15 Defining rules of the game
+#16/18 if guess too high/low
+  if guess > max_val:
+    print "Guess is too high"
+  else:
+    print "Rolling..."
+    #19 program sleep
+    sleep (2)
+    #20/21 print first/second roll
+    print "First roll is %d" % first_roll
+    sleep(1)
+    print "Second roll is %d" % second_roll
+    sleep(1)
+    #22/23 determining winner
+    total_roll = first_roll + second_roll
+    print total_roll
+    print "Result..."
+    sleep(1)
+    #24 check guess against roll
+    if guess == total_roll:
+      print "Congratulations! You won!"
+      #25 if does not match
+    else:
+      print "Sorry, you lost."
+
+#26 Calling functions
+roll_dice(7)
