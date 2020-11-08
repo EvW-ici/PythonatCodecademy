@@ -1,0 +1,37 @@
+#1 Area Calculator program description
+"""
+This a python-based program meant to
+calculate the area of triangles and circles.
+"""
+
+#2 Inform program is starting
+print "Starting the calculator..."
+
+#3 Requesting shape
+option = raw_input("Enter C for Cirlce or T for Triangle: ")
+
+#4 If circle is option
+if option == "C":
+  #5/6 - getting radius and converting to number
+  radius = float(raw_input("Enter radius: "))
+  #7 calculate area
+  area = 3.14159 * radius**2
+  #8 print area
+  print "Area: %f" % area
+
+#10 If Triangle is chosen
+elif option == "T":
+  #11 ask for base/convert
+  base = float(raw_input("Enter base: ")) 
+  #12 ask for height/convert
+  height = float(raw_input("Enter height: "))
+  #13 calculate area
+  area = 0.5 * base * height
+  #14 print area
+  print "Area %f" % area
+
+#15 if user enters neither
+else:
+  print "Invalid shape choice!"
+
+print "Exiting...."
