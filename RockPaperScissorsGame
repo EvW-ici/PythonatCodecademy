@@ -1,0 +1,53 @@
+#1 Explanation
+"""
+Rock, Paper, Scissors Guessing Game
+Player vs. Computer
+"""
+#2 import randint function
+from random import randint
+
+#3 create options
+options = ["Rock", "Paper", "Scissors"]
+
+#4 messages to inform player of status
+message = {
+  "tie": "Yawn it's a tie!",
+  "won": "Yay, you won!",
+  "lost": "Aww, you lost!"
+  }
+
+  #5 function to decide winner
+def decide_winner(user_choice, computer_choice):
+    #6 display user's choice
+    print "You selected: %s" % user_choice
+    #7 display computer's choice
+    print "Computer selected: %s" % computer_choice
+    #8 check choices, and if a tie
+    if user_choice == computer_choice:
+      print message["tie"]
+    #9/10 define actions for wins
+    elif user_choice == options[0] and computer_choice == options[2]:
+      print message["won"]
+    elif user_choice == options[1] and computer_choice == options[0]:
+      print message["won"]
+    elif user_choice == options[2] and computer_choice == options[1]:
+      print message["won"]
+    #11 in case of outcome does not match above conditions
+    else:
+      print message["lost"]
+
+#12 function for starting game
+def play_RPS():
+  #13/14 ask user for selection and format
+  user_choice = raw_input("Enter Rock, Paper, or Scissors: ")
+  user_choice = user_choice.upper()
+  #15 creating computer_choice
+  computer_choice = options[randint(0, 2)]
+  computer_choice = computer_choice.upper()
+  #determine winner
+  decide_winner(user_choice, computer_choice)
+
+#17 call program
+play_RPS()
+
+
