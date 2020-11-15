@@ -1,0 +1,6 @@
+#function returns product of integers in list
+def product(list):
+  result = 1
+  for i in list:
+    result *= i
+  return result
