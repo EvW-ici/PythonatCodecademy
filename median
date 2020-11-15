@@ -1,0 +1,9 @@
+#function to find median in list
+def median(lst):
+  n = len(lst)
+  s = sorted(lst)
+  ind = (n - 1) // 2
+  if (n % 2):
+    return s[ind]
+  else:
+    return (s[ind] + s[ind + 1]) / 2.0
