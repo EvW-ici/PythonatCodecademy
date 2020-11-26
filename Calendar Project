@@ -1,0 +1,101 @@
+"""
+This is a calendar 
+program. Events can 
+be edited or deleted.
+"""
+#2 Importing sleep function
+from time import sleep
+
+#3 Import datetime function but make it useless
+#from time import strftime
+#from time import datetime
+
+#4 More efficient function import
+from time import sleep, strftime
+
+#5 Ask User's name
+user_first_name = "Erin"
+
+#6-7 Data Structure for Calendar
+calendar = {}
+
+#8-13 Create Welcome message
+def welcome():
+  print "Welcome, " + user_first_name + "."
+  print "Calendar loading..."
+  sleep(1)
+  print "Today is: " + strftime("%A %B %d, %Y")
+  print "The time is: " + strftime("%H:%M:%S")
+  sleep(1)
+  print "What would you like to do?"
+
+#14-21 defining calendar functionality
+def start_calendar():
+  welcome()
+  start = True
+  #ask user what they want
+  while start:
+    user_input = raw_input("A to Add, U to Update, V to View, D to Delete, X to Exit: ")
+    user_input = user_input.upper()
+    #if user wants to View
+    if user_input == "V":
+      if len(calendar.keys()) < 1:
+        print "Calendar empty."
+      else:
+        print calendar
+    #22-25 if user chooses "U"
+    elif user_input == "U":
+      date = raw_input("What date? ")
+      update = raw_input("Enter the update: ")
+      calendar[date] = update
+      print calendar
+
+#26 - 34 - Defining the 'Add' function
+    elif user_input == "A":
+      event = raw_input("Enter even: ")
+      date = raw_input("Enter date (MM/DD/YYYY)")
+      if len(date) > 10 or int(date[6:]) < int(strftime("%Y")):
+        print len(date)
+        print int(date[6:])
+        print int(strftime("%Y"))
+        print "Invalid date was entered."
+        try_again = raw_input("Try again? Y for Yes, N for No.")
+        try_again = try_again.upper()
+        if try_again == "Y":
+          continue
+        else:
+          start = False
+      else:
+         calendar[date] = event
+
+#35 - 42 Defining Delete function
+    elif user_input == "D":
+      if len(calendar.keys()) < 1:
+        print "Calendar is empty."
+      else:
+        event = raw_input("What event? ")
+        for date in calendar.keys():
+          if event == calendar[date]:
+            del calendar[date]
+            print "Event deleted from calendar."
+            print calendar
+          else:
+            print "Incorrect event specified."
+    #43 allow user to exit program
+    elif user_input == "X":
+      start = False
+    #44 Incoherent input
+    else:
+      print "Invalid command entered."
+      start = False
+    
+#45-46 - testing
+start_calendar()
+
+
+
+
+
+
+
+
