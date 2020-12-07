@@ -1,0 +1,57 @@
+#1 Create bankaccount class
+class BankAccount(object):
+  #2 create balance member variable
+  balance = 0
+  #3 add init 
+  def __init__(self, name):
+    #4 name parameter
+    self.name = name
+  
+  #5/6 add repr method to represent object when printing object
+  def __repr__(self):
+    return "Account holder: %s Account Balance: $%.2f" % (self.name, self.balance)
+
+  #7 add show_balance method
+  def show_balance(self):
+    #8 format balance
+    print "Balance: $%.2f" % (self.balance)
+
+  #9-12 create deposit method
+  def deposit(self, amount):
+    if amount <= 0:
+      print "You cannot deposit a negative amount."
+      return
+    else:
+      print "New Balance: $%.2f" % (amount)
+      self.balance += amount
+      #13 call show balance
+      self.show_balance()
+
+  #14-15 withdrawal method
+  def withdraw(self, amount):
+    if amount > self.balance:
+      print "Your balance is not high enough to withdraw that amount. Please try again."
+    #16 print what the user is withdrawing
+    else:
+      print "You are withdrawing $%.2f" % (amount)
+      #17/8 reduce/show balance
+      self.balance -= amount
+      self.show_balance()
+
+#19 create my account variable
+my_account = BankAccount("dog")
+
+#20 print object
+print my_account
+ 
+#21 call show balance
+my_account.show_balance()
+
+#22 make a deposit
+my_account.deposit(2000)
+
+#23 check withdraw function
+my_account.withdraw(1000)
+
+#24 test repr method
+print my_account
