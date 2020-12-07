@@ -1,0 +1,52 @@
+sample = ['GTA','GGG','CAC']
+#3adding read_dna method
+def read_dna(dna_file):
+  #4 create dna variable
+  dna_data = ""
+  #5 open dna file
+  with open(dna_file, "r") as f:
+    #6-9 for loop to add dna data
+    for line in f:
+      dna_data += line
+  return dna_data
+
+#10-11 create codon list
+def dna_codons(dna):
+  codons = []
+  #12-13 iterate through codons
+  for i in range(0, len(dna), 3):
+    if (i + 3) < len(dna):
+      #14 append codon to list
+      codons.append(dna[i:i + 3])
+  #15 return codons list
+  return codons
+
+#16-17 create method to match dna
+def match_dna(dna):
+  matches = 0
+  #18-19 iterate through to find matches
+  for codon in dna:
+    if codon in sample:
+      #20 increment matches
+      matches += 1
+  #21 return matches
+  return matches
+
+#22 add method to detect criminal
+def is_criminal(dna_sample):
+  #23-24 create dna data/codon variables
+  dna_data = read_dna(dna_sample)
+  codons = dna_codons(dna_data)
+  #25 match DNA to samples
+  num_matches = match_dna(codons)
+  #26 -28 check number of matches
+  if num_matches >= 3:
+    print "There are %s codon matches. Investigation to continue." % num_matches
+  else: 
+    print "There are %s matches. Suspect can be freed" % num_matches
+
+#29 
+is_criminal("suspect1.txt")
+is_criminal("suspect2.txt")
+is_criminal("suspect3.txt")
+
